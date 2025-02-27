@@ -1,0 +1,114 @@
+#define N 2
+#define TRUE 1
+#define FALSE 2
+
+int intersted[N] = FALSE ;
+int turn ; 
+
+void Entry_section(int process) {
+int other ;
+other = 1-process;
+turn = process ;
+
+while(interested[other]==TRUE && turn == process);
+
+
+}
+
+# critical section 
+
+void Exit_section(int process) {
+interested[process]==FALSE ; 
+}
+
+
+
+// producer consumer problem 
+
+
+#define BUFFER_SIZE 5
+
+int buffer[BUFFER_SIZE];
+int count = 0 ;
+
+pthread_mutex_t mutex ; 
+sem_t empty, full ; 
+
+void *producer(void *arg) {
+  int item ; 
+  while(1) {
+    item = rand() % 10;
+    sem_wait(&empty);
+    pthread_mutex_lock(&mutex);
+    
+    buffer[count++] = item ; 
+    pthread_mutex_unlock(&mutex);
+    sem_post(&full);
+    sleep(1);
+  }
+}
+
+void *consumer(void *arg) {
+  int item ; 
+  while(1) {
+    sem_wait(&full);
+    pthread_mutex_lock(&mutex);
+    item = buffer[--count];
+    pthread_mutex_unlock(&mutex);
+    sem_post(&empty);
+    sleep(2);
+  }
+}
+
+
+int main() {
+  pthread_t prod,cons;
+
+  pthread_mutex_init(&mutex,NULL);
+  sem_init(&empty,0,BUFFER_SIZE);
+  sem_init(&full,0,0);
+
+  pthread_create(&prod,NULL,producer,NULL);
+  pthread_create(&cons,NULL,consumer,NULL);
+
+  pthread_join(prod,NULL);
+  pthread_join(cons,NULL);
+
+  pthread_mutex_destroy(&mutex);
+  sem_destroy(&empty);
+  sem_destroy(&full);
+
+  return 0 ; 
+
+}
+
+
+// Binary semaphore 
+
+
+struct Semaphore {
+    bool value;  // Binary semaphore (0 or 1)
+    Queue L;     // Queue of waiting processes
+};
+
+// Wait operation (P operation)
+
+void Wait(Semaphore *S) {
+    if (S->value == 1) {
+        S->value = 0;  // Lock the semaphore
+    } else {
+        AddProcessToQueue(S->L, currentProcess); // Put process in queue
+        BlockCurrentProcess();  // Block the process (sleep until signaled)
+    }
+}
+
+// Signal operation (V operation)
+
+void Signal(Semaphore *S) {
+    if (IsQueueEmpty(S->L)) {
+        S->value = 1;  // Unlock the semaphore
+    } else {
+        Process *p = RemoveProcessFromQueue(S->L);  // Select process
+        WakeUpProcess(p);  // Wake up that process
+    }
+}

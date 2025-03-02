@@ -112,3 +112,38 @@ void Signal(Semaphore *S) {
         WakeUpProcess(p);  // Wake up that process
     }
 }
+
+
+
+
+
+
+
+
+
+
+carrier sense multiple access collision detection 
+
+every host before sending the data senses the carrie and if it is free
+then it transmits the data. However a host can sense only part that it is conencted to the channel 
+
+also two station may seem that the channel is empty and initiate 
+transmission at the same time 
+
+Csma/cd doesn't use acknowledgement since it it mostly used in Lan'S
+So we need to detect that the collision has occured without using acknowledgement
+Collision produces a signal with differemt from data. So device can detect collisions if it sees signals.
+
+A device can thinks that the collision occurs only when the data is corrupted and the signals are sent back to the sender while it is transmitiing data.
+
+
+So we make sure that every stations transmits data long enough so that they acn detect any collisions. Transmission delay should be 2 times of propogation time.
+
+BackOff algo - it is used to give the waiiting time to the stations that are involved in the collisions.
+This is also known as the binary exponential back off algo
+this algo is applied to two stations only
+every packet is given a collision number 
+after a packet gets collided its collision number is incremented 
+
+after this both the host select a no of range from [0,2^n-1];
+where n is the collision number 

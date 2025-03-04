@@ -1,4 +1,6 @@
-#include <stdio.h>
+// peterson 
+
+
 
 #define N 2
 #define TRUE 1
@@ -112,6 +114,35 @@ void Signal(Semaphore *S) {
 }
 
 
+
+// bakery algo 
+do {
+    choosing[i] = TRUE;
+    
+    // Assign ticket number (1 + max ticket in system)
+    number[i] = max(number[0], ..., number[n – 1]) + 1;
+    
+    choosing[i] = FALSE;
+
+    // Check for other processes
+    for (j = 0; j < n; j++) {
+        while (choosing[j]);  // Wait if process j is selecting a ticket
+        
+        // Wait if j has a smaller ticket (or same ticket but smaller process ID)
+        while ((number[j] != 0) && 
+               ((number[j] < number[i]) || 
+               ((number[j] == number[i]) && (j < i))));
+    }
+
+    // Critical Section
+    critical_section();
+
+    // Exit Critical Section
+    number[i] = 0;
+
+    // Remainder Section
+    remainder_section();
+} while (TRUE);
 
 
 

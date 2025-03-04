@@ -129,9 +129,7 @@ do {
         while (choosing[j]);  // Wait if process j is selecting a ticket
         
         // Wait if j has a smaller ticket (or same ticket but smaller process ID)
-        while ((number[j] != 0) && 
-               ((number[j] < number[i]) || 
-               ((number[j] == number[i]) && (j < i))));
+        while ((number[j] != 0) && ((number[j] < number[i]) || ((number[j] == number[i]) && (j< i))));
     }
 
     // Critical Section

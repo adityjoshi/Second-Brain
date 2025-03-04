@@ -1,24 +1,22 @@
+#include <stdio.h>
+
 #define N 2
 #define TRUE 1
-#define FALSE 2
+#define FALSE 0
 
-int intersted[N] = FALSE ;
-int turn ; 
+int interested[N] = {FALSE, FALSE};  // Initialize both processes as not interested
+int turn;
 
 void Entry_section(int process) {
-int other ;
-other = 1-process;
-turn = process ;
+    int other = 1 - process;
+    interested[process] = TRUE;  // Declare interest
+    turn = process;              // Give turn to current process
 
-while(interested[other]==TRUE && turn == process);
-
-
+    while (interested[other] == TRUE && turn == process);  // Wait if the other process is interested
 }
 
-# critical section 
-
 void Exit_section(int process) {
-interested[process]==FALSE ; 
+    interested[process] = FALSE;  // Process is no longer interested
 }
 
 

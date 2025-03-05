@@ -25,6 +25,19 @@ void Exit_section(int process) {
 
 // producer consumer problem 
 
+a producer consumer is a classic syncronization problem where two types of 
+process share the same buffer and make changes to it . those two process are producer and consumer 
+
+producer - one which is producing the data
+consumer - the one which is consuming the data
+
+where that data gets stored that data is stored in a fixed storage called buffer. If the buffer is full producer can't send the data if its empty then the consumer waits for it.
+
+Modern software like apache kafka uses this toppic having producer conumer and topics 
+
+it is a non- busy waiting solution
+
+
 
 #define BUFFER_SIZE 5
 

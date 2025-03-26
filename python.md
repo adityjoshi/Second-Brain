@@ -80,3 +80,16 @@ for i in range(0,len(arr)):
 
 print("result arr", res)
 ```
+
+```
+import numpy as np
+
+# array split is nothing but in how many steps u want to split the array and print the array
+arr = np.array([1, 2, 3, 4, 5, 6])
+
+newarr = np.array_split(arr, 1)
+
+print(newarr)
+
+
+```

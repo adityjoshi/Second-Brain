@@ -33,4 +33,50 @@ print(arr[::-1]) or arr.reverse()
 
 
 ### reversing a numpy arr
+ 
 
+```
+import numpy as np 
+
+
+# /* flipping an array*/
+arr = np.array([1,2,3,4,5])
+print(np.flip(arr))
+
+# same as the flip one 
+print(np.flipud(arr))
+
+# simple slicing 
+print(arr[::-1])
+
+
+# count the elements in an array 
+arr = [20,30,40,2,4,5,6,6,1,22,2,20,20,20,30,30]
+print(max(arr))
+print(arr.count(20))
+
+
+
+def find_max(arr):
+  return max(arr)
+arr = set([30,20,10,22,44,69])
+print("find max in a set \n")
+print(find_max(arr))
+
+
+
+arr = [20,30,40,2,4,5,6,6,1,22,2,20,20,20,30,30]
+max = arr[0]
+for i in range(0,len(arr)):
+  if (arr[i] > max):
+    max = arr[i]
+
+print("max in an arr",max)
+
+res = []
+for i in range(0,len(arr)):
+  if i not in res:
+    res.append(i)
+
+print("result arr", res)
+```

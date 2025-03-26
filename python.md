@@ -15,3 +15,13 @@ for i in range(len(arr)-1,-1,-1):
 /* sort an array */
 
 print(sorted(arr))
+
+/* delete an element from an array */
+
+arr.remove(3)
+print(arr)
+
+
+/* search in an array*/
+
+print(arr.index(40))

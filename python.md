@@ -25,3 +25,12 @@ print(arr)
 /* search in an array*/
 
 print(arr.index(40))
+
+
+/* reverse an array list */
+
+print(arr[::-1]) or arr.reverse()
+
+
+### reversing a numpy arr
+

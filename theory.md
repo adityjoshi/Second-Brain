@@ -94,7 +94,7 @@ Let me know if you need more clarification on any of these topics.
 
 
 
-### **Operator Precedence in Python**  
+#### **6. Operator Precedence in Python**  
 
 **Operator precedence** determines the order in which different operators are evaluated in an expression. Operators with **higher precedence** are executed **before** those with lower precedence.  
 

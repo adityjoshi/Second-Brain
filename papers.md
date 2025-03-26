@@ -98,3 +98,47 @@ Optimizing algorithms ensures that Python programs run efficiently, even with la
    - **Why?** More memory-efficient than lists for simple numerical storage.
    - **Limitations:** Lacks vectorized operations like NumPy.
 
+### **4. Top-Down vs. Bottom-Up Programming**  
+
+### **Top-Down Programming**  
+In the **top-down approach**, a problem is divided into smaller sub-problems, and each sub-problem is solved step by step. This approach focuses on **breaking down** a complex system into smaller, manageable parts before implementing them.  
+
+#### **When to Use?**  
+- When working on a **large, structured project** where planning is important.  
+- When the system's overall design is clear, but the implementation details can be refined later.  
+- When debugging complex systems, as it allows focusing on high-level logic first.  
+
+#### **Example (Without Code)**  
+Consider designing a **banking application**.  
+1. First, define the **main operations** (Deposit, Withdraw, Check Balance).  
+2. Break them into **sub-functions** (e.g., deposit needs a function to update the account balance).  
+3. Further refine sub-functions (e.g., update balance should check for valid transactions).  
+4. Implement each function step by step.  
+
+Here, the **main structure is planned first**, and then details are added gradually.  
+
+---
+
+### **Bottom-Up Programming**  
+In the **bottom-up approach**, small independent components are developed first. These components are then integrated to build a complete system. This approach focuses on **reusability** and **modularity**.  
+
+#### **When to Use?**  
+- When using **pre-existing libraries or APIs** to build a system.  
+- When **small, reusable functions** or **modules** are needed before integrating them.  
+- When the final system is **not fully defined yet**, but small independent functions can be developed.  
+
+#### **Example (Without Code)**  
+Consider building a **scientific calculator**.  
+1. First, implement **basic operations** like addition, subtraction, multiplication, and division.  
+2. Then, create **advanced operations** like logarithm, exponentiation, and trigonometry using basic functions.  
+3. Finally, combine all these functions into a **calculator system** that takes user input and performs calculations.  
+
+Here, the **individual components** are developed first, and then they are assembled into a complete system.  
+
+---
+
+### **Key Differences**  
+- **Top-Down Approach**: Starts with the **overall structure** and then breaks it into smaller parts.  
+- **Bottom-Up Approach**: Starts with **small components** and then builds the complete system.  
+
+Both approaches are useful depending on **project complexity, clarity, and modularity**! 🚀

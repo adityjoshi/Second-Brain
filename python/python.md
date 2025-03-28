@@ -93,3 +93,27 @@ print(newarr)
 
 
 ```
+
+```python
+
+prime number 
+
+def num(n):
+  if n<2:
+    return False
+  for i in range(2,n):
+    if n % i == 0:
+      return False
+  return True 
+
+def primes(m,n):
+  primeList = []
+  for i in range(m,n+1):
+    if num(i):
+      primeList.append(i) 
+  return primeList
+
+print(primes(5,500))
+
+
+```

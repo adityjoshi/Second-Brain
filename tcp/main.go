@@ -12,7 +12,7 @@ func main() {
 	}
 	defer listener.Close()
 
-	log.Println("Server is listening on port 8080")
+	log.Println("Server is listening on port 1729")
 
 	for {
 		conn, err := listener.Accept()

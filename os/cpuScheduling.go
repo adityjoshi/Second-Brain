@@ -250,7 +250,7 @@ func clone(orig []Process) []Process {
 	return dup
 }
 
-func mainMe() {
+func main() {
 	processes := processInputData()
 
 	FCFS(processes)

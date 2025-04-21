@@ -90,7 +90,7 @@ func FCFS(orig []Process) {
 }
 
 func SJF(orig []Process) {
-	fmt.Println("=== SJF (Non-Preemptive) ===")
+	fmt.Println("=== SJF ===")
 	processes := clone(orig)
 	n := len(processes)
 	done := 0
@@ -127,9 +127,8 @@ func SJF(orig []Process) {
 	ganttChart(exec)
 }
 
-// SRTF Preemptive
 func SRTF(orig []Process) {
-	fmt.Println("=== SRTF (Preemptive SJF) ===")
+	fmt.Println("=== SRTF ===")
 	processes := clone(orig)
 	n := len(processes)
 	time := 0
@@ -179,7 +178,6 @@ func SRTF(orig []Process) {
 	ganttChart(exec)
 }
 
-// Round Robin
 func RR(orig []Process, quantum int) {
 	fmt.Println("=== Round Robin ===")
 	processes := clone(orig)
@@ -236,7 +234,6 @@ func RR(orig []Process, quantum int) {
 	ganttChart(exec)
 }
 
-// Helpers
 func min(a, b int) int {
 	if a < b {
 		return a

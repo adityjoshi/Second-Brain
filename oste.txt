@@ -1,0 +1,218 @@
+
+NON-BUSY WAITING SOLUTION
+
+# Producer-Consumer Problem 
+
+A producer-consumer is a classic syncronization problem where two types of 
+process share the same buffer and make changes to it . Those two process are 
+producer and consumer.
+
+producer - one which is producing the data
+consumer - the one which is consuming the data
+
+where that data gets stored that data is stored in a fixed storage called 
+buffer. If the buffer is full producer can't send the data if its empty then 
+the consumer waits for it.
+
+Modern software like apache kafka uses this toppic having producer conumer and topics 
+
+It is a non- busy waiting solution
+
+
+
+#define BUFFER_SIZE 5; 
+int buffer[BUFFER_SIZE];
+int count = 0 ; 
+
+pthread_mutex_t mutex ; 
+sem_t empty, full ; 
+
+
+void *producer(void args) {
+  int item ; 
+  while (1) {
+    item = rand () % 10 ; 
+    sem_wait(&empty);
+    pthread_mutex_lock(&mutex);
+    buffer[count++] = item ; 
+    pthread_mutex_unlock(&mutex); 
+    sem_post(&full);
+    sleep(1);
+  }
+}
+
+  void *consumer(void args) {
+    int item ; 
+    while(1) {
+      sem_wait(&full) ;
+      pthread_mutex_lock(&mutex);
+      buffer[count--] = item ; 
+      pthread_mutex_unlock(&mutex);
+      sem_post(&unlock);
+      sleep(2);
+    } 
+  }
+
+
+
+int main () {
+  pthread_t prod, cons ; 
+  pthread_mutex_init(&mutex, NULL);
+  sem_init(&empty,0,BUFFER_SIZE);
+  sem_init(&full,0,0);
+
+  pthread_create_init(&prod,NULL,producer,NULL);
+  pthread_create_inti(&cons,NULL,consumer,NULL);
+
+  pthread_join(prod,NULL);
+  pthread_join(cons,NULL);
+
+  pthread_mmutex_destroy(&mutex);
+  sem_destroy(&empty);
+  sem_destroy(&full);
+}
+
+
+# BAKERY'S ALGORITHM 
+
+it is a software based solution to achieve mutual exclusion among multiple process . 
+
+It is called bakery cuz 
+ - you take a number 
+ - you wait for your turn (lowest number gets served first)
+
+
+Each process : 
+ - takes the number when it wants to enter the critical sectiom 
+ 
+ Waits until 
+   - no other process has a smaller number or 
+   - if two process has the same number so the one with smaller process id win
+
+
+do {
+  choosing[i] = TRUE ; 
+  number[i] = max(number[0]......,number[n-1]);
+  choosing[i] = FALSE ; 
+  for (int j = 0 ; j < n ; j++) {
+    while (choosing[j]) do no-op ; 
+
+    while((number[j]!=0 && (number[j],j)<(number[i],i)));
+  }
+  critical seciton 
+  number[i] = 0  ; 
+  remainder section 
+} while (TRUE);
+
+
+#DISK STRUCTURE 
+
+A disk such as hard disk drivr HDD is used to store the large amount of the data. Every disk is made up of one or more flat disk called platter. each disk has a specific structure to organize the data very efficiently. 
+
+
+Platter 
+
+- platter are the actual round disk inside the hard disk 
+- they are actually coated with the magnetic material to store the data
+- platter spin at a very high speed of - 5400 rpm, 7200 or even more
+
+Surface 
+
+- every disk has two surface -> top and bottom 
+- data can be written to both the top and bottom 
+- data is written in a very organised manner 
+
+
+Tracks
+
+- the surface is then divide into the Tracks
+- a track is nothing but the circular ring like structure 
+- each ring is called a track 
+- track no 0 is the outer edge as we move inside towards the centre the track number increases
+- a circular path to store the data
+
+
+Sectors 
+
+- each track is divided into smaller pieces called sectors 
+- a sector is nothing but we can assume it as small slice of track that store 512 bytes or you can say 4096 bits of data
+- when u save a file the it is divided into the sectors 
+
+
+Cylinder 
+
+-Imagine all the tracks that are vertically up and below each other on different platter together they form a cylinder. 
+- a cylinder is basically the same track number across all the platter 
+- read/write head can access it without moving up and down, just side to side
+
+Read/Write head 
+
+- the read/write head is a tiny needle that floats above the platter 
+- it reads and write data to the disk 
+- each surfce has its own head 
+
+Spindle and motor
+
+- spindle handles the platter together and spins them 
+- a motor rotates the platter at a constant speed 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BUSY WAIITNG SOLUTION 
+
+#PETERSON syncronization (SOFTWARE BASED SOLUTION)
+
+Peterson solution is the classic sofware solution to achieve the mutual exclusion i.e. only one process can access the critical section in a concurrent environment without relying on special hardware. 
+
+- mutal exlusion , progress and bounded waiting is guranteed 
+
+
+#define N 2
+#define TRUE 1
+#define FALSE 0 
+
+int interested[N] = {FALSE, FALSE};
+int turn ; 
+
+void entry(int process) {
+  int other = 1-process; 
+  interested[process] = TRUE ;
+  turn = process ; 
+  while(interested[other] == TRUE && turn == process);
+}
+
+ +------------------+
+ |    Criticla      |
+ |    Section       |
+ +------------------+
+
+ void exit(int process) {
+   interested[process] = FALSE ; 
+ }

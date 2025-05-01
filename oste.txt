@@ -14,7 +14,7 @@ where that data gets stored that data is stored in a fixed storage called
 buffer. If the buffer is full producer can't send the data if its empty then 
 the consumer waits for it.
 
-Modern software like apache kafka uses this toppic having producer conumer and topics 
+Modern software like apache kafka uses this topic having producer conumer and topics 
 
 It is a non- busy waiting solution
 

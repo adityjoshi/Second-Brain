@@ -3,17 +3,17 @@ package vehicle
 type VehicleType string
 
 const (
-	CarType    VehicleType = "Car"
-	VanType    VehicleType = "Van"
-	TruckType  VehicleType = "TruckType"
-	MotorCycle VehicleType = "MotorCycle"
+	CarType        VehicleType = "Car"
+	VanType        VehicleType = "Van"
+	TruckType      VehicleType = "TruckType"
+	MotorCycleType VehicleType = "MotorCycle"
 )
 
 var vehicleCost = map[VehicleType]float64{
-	CarType:    120,
-	VanType:    100,
-	TruckType:  150,
-	MotorCycle: 80,
+	CarType:        120,
+	VanType:        100,
+	TruckType:      150,
+	MotorCycleType: 80,
 }
 
 type Vehicle struct {
@@ -69,10 +69,10 @@ func NewTruck(license string) *Truck {
 	return &Truck{*NewVehicle(license, TruckType)}
 }
 
-type Bike struct {
+type MotorCycle struct {
 	Vehicle
 }
 
-func NewMotoCycle(license string) *Bike {
-	return &Bike{*NewVehicle(license, MotorCycle)}
+func NewMotoCycle(license string) *MotorCycle {
+	return &MotorCycle{*NewVehicle(license, MotorCycleType)}
 }

@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
-	"golang.org/x/text/unicode/rangetable"
 )
 
 const (

@@ -1,0 +1,39 @@
+package main
+
+import (
+	"fmt"
+	"sync"
+
+	"github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
+)
+
+type ParkingSpot struct {
+	SpotId         int
+	VehicleType    vehicle.VehicleType
+	CurrentVehicle *vehicle.VehicleInterface
+	Lock           sync.Mutex
+}
+
+func (p *ParkingSpot) IsParkingSpotFree() bool {
+	return p.CurrentVehicle == nil
+}
+
+func NewParkingSpot(spotId int, vehicleType vehicle.VehicleType) *ParkingSpot {
+	return &ParkingSpot{SpotId: spotId, VehicleType: vehicleType}
+}
+
+func (p *ParkingSpot) Park(vehicles vehicle.VehicleInterface) error {
+	p.Lock.Lock()
+	defer p.Lock.Unlock()
+
+	if vehicles.GetVehicleType() != p.VehicleType {
+		return fmt.Errorf("vehicle type mismatch expected %s got %s", p.VehicleType, vehicles.GetVehicleType())
+	}
+
+	if p.CurrentVehicle != nil {
+		return fmt.Errorf("parking spot already occupied")
+	}
+
+	p.CurrentVehicle = &vehicles
+	return nil
+}

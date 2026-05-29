@@ -68,3 +68,11 @@ type Truck struct {
 func NewTruck(license string) *Truck {
 	return &Truck{*NewVehicle(license, TruckType)}
 }
+
+type Bike struct {
+	Vehicle
+}
+
+func NewMotoCycle(license string) *Bike {
+	return &Bike{*NewVehicle(license, MotorCycle)}
+}

@@ -37,3 +37,7 @@ func (p *ParkingSpot) Park(vehicles vehicle.VehicleInterface) error {
 	p.CurrentVehicle = &vehicles
 	return nil
 }
+
+func (p *ParkingSpot) RemoveVehicle() {
+	p.CurrentVehicle = nil
+}

@@ -31,3 +31,12 @@ func createParkingSpots(count int, vehicleType vehicle.VehicleType) map[int]*Par
 	}
 	return spots
 }
+
+func (p *ParkingFloor) FindAvailableSlots(vehicleType vehicle.VehicleType) *ParkingSpot {
+	for _, spot := range p.ParkingSpots[vehicleType] {
+		if spot.IsParkingSpotFree() {
+			return spot
+		}
+	}
+	return nil
+}

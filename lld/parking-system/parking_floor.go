@@ -1,6 +1,11 @@
 package main
 
-import "github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
+import (
+	"fmt"
+
+	"github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
+	"golang.org/x/text/unicode/rangetable"
+)
 
 const (
 	CarCount   = 5
@@ -39,4 +44,21 @@ func (p *ParkingFloor) FindAvailableSlots(vehicleType vehicle.VehicleType) *Park
 		}
 	}
 	return nil
+}
+
+func (p *ParkingFloor) DisplayStatus(parkingFloor *ParkingFloor) {
+
+	fmt.Println("FloorID: %d\n", p.FloorId)
+
+	for vehicleType, spotMap := range parkingFloor.ParkingSpots {
+		fmt.Printf("\n %s spots:\n", vehicleType)
+		count := 0
+
+		for _, spot := range spotMap {
+			if spot.IsParkingSpotFree() {
+				count++
+			}
+		}
+		fmt.Printf("\n%s Free spot for: %s are %d", vehicleType, count)
+	}
 }

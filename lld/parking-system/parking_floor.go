@@ -23,3 +23,11 @@ func NewParkingFloor(floorId int) *ParkingFloor {
 
 	return &ParkingFloor{FloorId: floorId, ParkingSpots: parkingSpot}
 }
+
+func createParkingSpots(count int, vehicleType vehicle.VehicleType) map[int]*ParkingSpot {
+	spots := make(map[int]*ParkingSpot)
+	for i := 1; i <= count; i++ {
+		spots[i] = NewParkingSpot(i, vehicleType)
+	}
+	return spots
+}

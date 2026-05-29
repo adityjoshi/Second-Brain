@@ -44,3 +44,27 @@ func NewVehicle(licenseNumber string, vehicleType VehicleType) *Vehicle {
 	cost := vehicleCost[vehicleType]
 	return &Vehicle{LicenseNumber: licenseNumber, VehicleType: vehicleType, Cost: cost}
 }
+
+type Car struct {
+	Vehicle
+}
+
+func NewCar(license string) *Car {
+	return &Car{*NewVehicle(license, CarType)}
+}
+
+type Van struct {
+	Vehicle
+}
+
+func NewVan(license string) *Van {
+	return &Van{*NewVehicle(license, VanType)}
+}
+
+type Truck struct {
+	Vehicle
+}
+
+func NewTruck(license string) *Truck {
+	return &Truck{*NewVehicle(license, TruckType)}
+}

@@ -27,3 +27,15 @@ type VehicleInterface interface {
 	GetVehicleType() VehicleType
 	GetHourlyRate() float64
 }
+
+func (v *Vehicle) GetLicenseNumber() string {
+	return v.LicenseNumber
+}
+
+func (v *Vehicle) GetVehicleType() string {
+	return string(v.VehicleType)
+}
+
+func (v *Vehicle) GetHourlyRate() float64 {
+	return v.Cost
+}

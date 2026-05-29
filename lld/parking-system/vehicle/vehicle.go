@@ -39,3 +39,8 @@ func (v *Vehicle) GetVehicleType() string {
 func (v *Vehicle) GetHourlyRate() float64 {
 	return v.Cost
 }
+
+func NewVehicle(licenseNumber string, vehicleType VehicleType) *Vehicle {
+	cost := vehicleCost[vehicleType]
+	return &Vehicle{LicenseNumber: licenseNumber, VehicleType: vehicleType, Cost: cost}
+}

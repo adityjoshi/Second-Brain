@@ -45,3 +45,17 @@ func (p *ParkingLot) FindParkingSpot(vehicleType vehicle.VehicleType) (*ParkingS
 	}
 	return nil, fmt.Errorf("no available parking spot found for the vehicle %s\n", vehicleType)
 }
+
+func (p *ParkingLot) ParkVehicle(vehicle vehicle.VehicleType) (*ParkingTicket, error) {
+	parkingSpot, err := p.FindParkingSpot(vehicle)
+	if err != nil {
+		return nil, err
+	}
+	if err = parkingSpot.ParkVehicle(vehicle); err != nil {
+		return nil, err
+	}
+
+	parkingTikcet := NewParkingTicket(vehicle, parkingSpot)
+	return parkingTikcet, nil
+
+}

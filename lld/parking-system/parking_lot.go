@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 
 	"github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
 )
@@ -57,5 +58,11 @@ func (p *ParkingLot) ParkVehicle(vehicle vehicle.VehicleType) (*ParkingTicket, e
 
 	parkingTikcet := NewParkingTicket(vehicle, parkingSpot)
 	return parkingTikcet, nil
+
+}
+
+func (p *ParkingLot) UnparkVehicle(parkingTicket *ParkingTicket) error {
+	parkingTicket.SetExitTime(time.Now())
+	charge := parkingTicket.CalculateTotalCharge()
 
 }

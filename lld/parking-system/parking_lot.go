@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"sync"
+
+	"github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
 )
 
 var (
@@ -33,4 +35,13 @@ func (p *ParkingLot) DisplayAvailability() {
 	for _, floor := range p.floors {
 		floor.DisplayStatus(floor)
 	}
+}
+
+func (p *ParkingLot) FindParkingSpot(vehicleType vehicle.VehicleType) (*ParkingSpot, error) {
+	for _, floors := range p.floors {
+		if spot := floors.FindAvailableSlots(vehicleType); spot != nil {
+			return spot, nil
+		}
+	}
+	return nil, fmt.Errorf("no available parking spot found for the vehicle %s\n", vehicleType)
 }

@@ -16,6 +16,9 @@ type ParkingTicket struct {
 	TotalCharge float64
 }
 
+func NewParkingTicket(vehicle vehicle.VehicleInterface, spot *ParkingSpot) *ParkingTicket {
+	return &ParkingTicket{EntryTime: time.Now(), ExitTime: time.Time{}, Vehicle: vehicle, Spot: spot, TotalCharge: 0.00}
+}
 func (p *ParkingTicket) SetExitTime(t time.Time) {
 	p.ExitTime = t
 }

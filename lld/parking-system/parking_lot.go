@@ -47,12 +47,12 @@ func (p *ParkingLot) FindParkingSpot(vehicleType vehicle.VehicleType) (*ParkingS
 	return nil, fmt.Errorf("no available parking spot found for the vehicle %s\n", vehicleType)
 }
 
-func (p *ParkingLot) ParkVehicle(vehicle vehicle.VehicleType) (*ParkingTicket, error) {
-	parkingSpot, err := p.FindParkingSpot(vehicle)
+func (p *ParkingLot) ParkVehicle(vehicle vehicle.VehicleInterface) (*ParkingTicket, error) {
+	parkingSpot, err := p.FindParkingSpot(vehicle.GetVehicleType())
 	if err != nil {
 		return nil, err
 	}
-	if err = parkingSpot.ParkVehicle(vehicle); err != nil {
+	if err = parkingSpot.Park(vehicle); err != nil {
 		return nil, err
 	}
 

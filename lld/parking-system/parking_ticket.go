@@ -6,7 +6,7 @@ import (
 	"github.com/adityjoshi/Second-Brain/lld/parking-system/vehicle"
 )
 
-const baseChager = 100.00
+const baseCharge = 100.00
 
 type ParkingTicket struct {
 	EntryTime   time.Time
@@ -21,4 +21,16 @@ func NewParkingTicket(vehicle vehicle.VehicleInterface, spot *ParkingSpot) *Park
 }
 func (p *ParkingTicket) SetExitTime(t time.Time) {
 	p.ExitTime = t
+}
+
+func (p *ParkingTicket) CalculateTotalCharge() float64 {
+	if p.ExitTime == (time.Time{}) {
+		p.TotalCharge = baseCharge
+		return p.TotalCharge
+	}
+	duration := p.ExitTime.Sub(p.EntryTime)
+	hours := duration.Hours()
+	newCharge := hours * p.Vehicle.GetHourlyRate()
+	p.TotalCharge = baseCharge + newCharge
+	return p.TotalCharge
 }

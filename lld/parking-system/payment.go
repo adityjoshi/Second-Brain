@@ -33,3 +33,7 @@ func (p *Payment) ProcessPayment() error {
 	return nil
 
 }
+
+func (p *Payment) GetPaymentStatus() PaymentStatus {
+	return p.Status
+}

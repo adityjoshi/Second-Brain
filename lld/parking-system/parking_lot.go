@@ -65,4 +65,13 @@ func (p *ParkingLot) UnparkVehicle(parkingTicket *ParkingTicket) error {
 	parkingTicket.SetExitTime(time.Now())
 	charge := parkingTicket.CalculateTotalCharge()
 
+	paymentSystem := NewPaymentSystem(charge, parkingTicket)
+
+	if err := paymentSystem.ProcessPayment(); err != nil {
+		return fmt.Errorf("unable to process the payment %v", err)
+	}
+
+	parkingTicket.Spot.RemoveVehicle()
+	return nil
+
 }

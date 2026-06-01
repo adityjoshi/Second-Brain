@@ -47,7 +47,7 @@ func (p *ParkingFloor) FindAvailableSlots(vehicleType vehicle.VehicleType) *Park
 
 func (p *ParkingFloor) DisplayStatus(parkingFloor *ParkingFloor) {
 
-	fmt.Println("FloorID: %d\n", p.FloorId)
+	fmt.Printf("FloorID: %d \n", p.FloorId)
 
 	for vehicleType, spotMap := range parkingFloor.ParkingSpots {
 		fmt.Printf("\n %s spots:\n", vehicleType)
@@ -58,6 +58,6 @@ func (p *ParkingFloor) DisplayStatus(parkingFloor *ParkingFloor) {
 				count++
 			}
 		}
-		fmt.Printf("\n%s Free spot for: %s are %d", vehicleType, count)
+		fmt.Printf("\nFree spots for %s: %d\n", vehicleType, count)
 	}
 }

@@ -32,8 +32,8 @@ func (v *Vehicle) GetLicenseNumber() string {
 	return v.LicenseNumber
 }
 
-func (v *Vehicle) GetVehicleType() string {
-	return string(v.VehicleType)
+func (v *Vehicle) GetVehicleType() VehicleType {
+	return v.VehicleType
 }
 
 func (v *Vehicle) GetHourlyRate() float64 {
@@ -50,7 +50,7 @@ type Car struct {
 }
 
 func NewCar(license string) *Car {
-	return &Car{*NewVehicle(license, CarType)}
+	return &Car{Vehicle: *NewVehicle(license, CarType)}
 }
 
 type Van struct {

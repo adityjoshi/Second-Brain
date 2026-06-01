@@ -27,3 +27,15 @@ func (e *Elevator) AddDestination(floor int) {
 	fmt.Printf("Elevator %d received destination floor with the floor id %d\n", e.ID, floor)
 	e.Lock.Unlock()
 }
+
+func (e *Elevator) RemoveDestination(floor int) {
+	e.Lock.Lock()
+	for i, f := range e.Destination {
+		if f == floor {
+			e.Destination = append(e.Destination[:i], e.Destination[i+1:]...)
+			// todo: remove destination floor
+		}
+		break
+	}
+	e.Lock.Unlock()
+}

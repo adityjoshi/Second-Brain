@@ -39,3 +39,19 @@ func (e *Elevator) RemoveDestination(floor int) {
 	}
 	e.Lock.Unlock()
 }
+
+func (e *Elevator) UpdateCurrentFloor(floor int) {
+	e.Lock.Lock()
+	e.CurrentFloor = floor
+	e.Lock.Unlock()
+}
+
+func (e *Elevator) UpdateCurrentDirection(dir Directions) {
+	e.Lock.Lock()
+	e.CurrentDirection = dir
+	e.Lock.Unlock()
+}
+
+func (e *Elevator) FarthesetDirection() int {
+
+}

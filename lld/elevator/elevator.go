@@ -1,6 +1,9 @@
 package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 type Elevator struct {
 	ID               int
@@ -15,4 +18,12 @@ type Elevator struct {
 
 func NewElevator(id int) *Elevator {
 	return &Elevator{ID: id, Capacity: 10, CurrentFloor: 0, CurrentDirection: Still, CurrentLoad: 0, Elevator: NewElevatorPanel(id)}
+}
+
+func (e *Elevator) AddDestination(floor int) {
+	e.Lock.Lock()
+	// todo : add destination floor
+	e.Destination = append(e.Destination, floor)
+	fmt.Printf("Elevator %d received destination floor with the floor id %d\n", e.ID, floor)
+	e.Lock.Unlock()
 }

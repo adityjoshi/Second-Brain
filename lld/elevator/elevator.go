@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sync"
 )
 
@@ -53,5 +54,22 @@ func (e *Elevator) UpdateCurrentDirection(dir Directions) {
 }
 
 func (e *Elevator) FarthesetDirection() int {
+	mf := 0
 
+	for _, floor := range e.Destination {
+		if floor > mf {
+			mf = floor
+		}
+	}
+	return mf
+}
+
+func (e *Elevator) NearestDirection() int {
+	nf := math.MaxInt
+	for _, floor := range e.Destination {
+		if nf > floor {
+			nf = floor
+		}
+	}
+	return nf
 }

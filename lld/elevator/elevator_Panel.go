@@ -2,7 +2,7 @@ package main
 
 type ElevatorPanel struct {
 	PanelID      int
-	FloorButtons [N]bool
+	FloorButtons [15]bool
 }
 
 func NewElevatorPanel(panelID int) *ElevatorPanel {
@@ -13,6 +13,6 @@ func (ep *ElevatorPanel) AddDestinationFloor(floor int) {
 	ep.FloorButtons[floor] = true
 }
 
-func (ep *ElevatorPanel) RemoveDestination(floor int) {
+func (ep *ElevatorPanel) RemoveDestinationFloor(floor int) {
 	ep.FloorButtons[floor] = false
 }

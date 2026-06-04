@@ -23,8 +23,8 @@ func NewElevator(id int) *Elevator {
 
 func (e *Elevator) AddDestination(floor int) {
 	e.Lock.Lock()
-	// todo : add destination floor
 	e.Destination = append(e.Destination, floor)
+	e.Elevator.AddDestinationFloor(floor)
 	fmt.Printf("Elevator %d received destination floor with the floor id %d\n", e.ID, floor)
 	e.Lock.Unlock()
 }
@@ -34,7 +34,7 @@ func (e *Elevator) RemoveDestination(floor int) {
 	for i, f := range e.Destination {
 		if f == floor {
 			e.Destination = append(e.Destination[:i], e.Destination[i+1:]...)
-			// todo: remove destination floor
+			e.Elevator.RemoveDestinationFloor(floor)
 		}
 		break
 	}

@@ -17,4 +17,5 @@ func NewBuilding() *Building {
 		elevator := NewElevator(i)
 		building.Elevators = append(building.Elevators, elevator)
 	}
+	return building
 }

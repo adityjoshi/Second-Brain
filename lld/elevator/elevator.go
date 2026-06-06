@@ -10,7 +10,7 @@ type Elevator struct {
 	ID               int
 	Capacity         int
 	CurrentFloor     int
-	CurrentDirection int
+	CurrentDirection Directions
 	CurrentLoad      int
 	Elevator         *ElevatorPanel
 	Destination      []int
@@ -18,7 +18,7 @@ type Elevator struct {
 }
 
 func NewElevator(id int) *Elevator {
-	return &Elevator{ID: id, Capacity: 10, CurrentFloor: 0, CurrentDirection: Still, CurrentLoad: 0, Elevator: NewElevatorPanel(id)}
+	return &Elevator{ID: id, Capacity: 10, CurrentFloor: 0, CurrentDirection: STILL, CurrentLoad: 0, Elevator: NewElevatorPanel(id)}
 }
 
 func (e *Elevator) AddDestination(floor int) {

@@ -40,3 +40,19 @@ func (em *ElevatorManager) OperateElevator(e *Elevator) {
 		e.Lock.Unlock()
 	}
 }
+
+func (em *ElevatorManager) DecideDirection(e *Elevator) {
+	currentFloor := e.CurrentFloor
+	if len(e.CurrentDirection) == 0 {
+		return
+	}
+
+	nearestDestination := e.Destination[0]
+	if nearestDestination > currentFloor {
+		e.UpdateCurrentDirection(UP)
+		em.MoveElevatorUp(e)
+	} else {
+		e.UpdateCurrentDirection(DOWN)
+		em.MoveElevatorDown(e)
+	}
+}

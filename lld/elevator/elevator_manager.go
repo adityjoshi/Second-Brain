@@ -56,3 +56,38 @@ func (em *ElevatorManager) DecideDirection(e *Elevator) {
 		em.MoveElevatorDown(e)
 	}
 }
+
+func (em *ElevatorManager) MoveElevatorUp(e *Elevator) {
+	for i := 0; i < len(e.Destination); i++ {
+		destination := e.Destination[i]
+		if destination >= e.CurrentFloor {
+			fmt.Printf("Elevator %d moving up to floor %d\n", e.ID, destination)
+			e.UpdateCurrentFloor(destination)
+			e.RemoveDestination(destination)
+			i--
+		}
+	}
+	if len(e.Destination) == 0 {
+		e.UpdateCurrentDirection(STILL)
+	} else {
+		e.UpdateCurrentDirection(DOWN)
+	}
+}
+
+func (em *ElevatorManager) MoveElevatorDown(e *Elevator) {
+	for i := len(e.Destination) - 1; i >= 0; i-- {
+		destination := e.Destination[i]
+		if destination <= e.CurrentFloor {
+			fmt.Printf("Elevator %d moving down to floor %d\n", e.ID, destination)
+			e.UpdateCurrentFloor(destination)
+			e.RemoveDestination(destination)
+
+		}
+	}
+	if len(e.Destination) == 0 {
+		e.UpdateCurrentDirection(STILL)
+	} else {
+		e.UpdateCurrentDirection(UP)
+	}
+
+}

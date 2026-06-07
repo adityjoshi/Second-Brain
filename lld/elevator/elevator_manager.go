@@ -91,3 +91,29 @@ func (em *ElevatorManager) MoveElevatorDown(e *Elevator) {
 	}
 
 }
+
+func (em *ElevatorManager) AssignElevator(floor int, dir Directions) *Elevator {
+	bestE := em.FindClosestElevator(floor, dir)
+	if bestE != nil {
+		bestE.AddDestination(floor)
+		fmt.Printf("Elevator %d assigned to floor %d with direction %s\n", bestE.ID, floor, dir)
+
+	}
+	return bestE
+}
+
+func (em *ElevatorManager) FindClosestElevator(floor int, dir Directions) *Elevator {
+	var ce *Elevator
+	minDistance := int(1e9)
+
+	for _, elevator := range em.Building.Elevators {
+		elevator.Lock.Lock()
+		distance := em.Distance(elevator, floor, dir)
+		if distance < minDistance {
+			minDistance = distance
+			ce = elevator
+		}
+		elevator.Lock.Unlock()
+	}
+	return ce
+}

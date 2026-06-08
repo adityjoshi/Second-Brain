@@ -41,7 +41,7 @@ func handleClient(conn net.Conn) {
 		receivedData := string(buffer[:n])
 		log.Printf("Received from client (%s): %s\n", conn.RemoteAddr(), receivedData)
 
-		response := "Hello from the server!\n"
+		response := receivedData
 		_, err = conn.Write([]byte(response))
 		if err != nil {
 			log.Println("Error sending response:", err)

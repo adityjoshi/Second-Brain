@@ -117,3 +117,19 @@ func (em *ElevatorManager) FindClosestElevator(floor int, dir Directions) *Eleva
 	}
 	return ce
 }
+
+func (em *ElevatorManager) Distance(elevator *Elevator, floor int, dir Directions) int {
+	currentFloor := elevator.CurrentFloor
+	currentDirection := elevator.CurrentDirection
+
+	if currentDirection == STILL || (currentDirection == dir && ((dir == UP && floor > currentFloor) || (dir == DOWN && floor < currentFloor))) {
+		return abs(floor - currentFloor)
+	}
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}

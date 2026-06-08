@@ -250,15 +250,15 @@ func clone(orig []Process) []Process {
 	return dup
 }
 
-func main() {
-	processes := processInputData()
+// func main() {
+// 	processes := processInputData()
 
-	FCFS(processes)
-	SJF(processes)
-	SRTF(processes)
+// 	FCFS(processes)
+// 	SJF(processes)
+// 	SRTF(processes)
 
-	var quantum int
-	fmt.Print("Enter time quantum for Round Robin: ")
-	fmt.Scan(&quantum)
-	RR(processes, quantum)
-}
+// 	var quantum int
+// 	fmt.Print("Enter time quantum for Round Robin: ")
+// 	fmt.Scan(&quantum)
+// 	RR(processes, quantum)
+// }

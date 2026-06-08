@@ -86,7 +86,7 @@ func SCAN(requests []int, head, diskSize int, direction string) {
 			total += abs(cur - reqs[i])
 			cur = reqs[i]
 		}
-		if cur != diskSize-1 
+		if cur != diskSize-1 {
 			fmt.Printf("Move from %d to %d\n", cur, diskSize-1)
 			total += diskSize - 1 - cur
 			cur = diskSize - 1
@@ -168,6 +168,7 @@ func CSCAN(requests []int, head, diskSize int) {
 func main() {
 	n := inputInt("Enter number of disk requests: ")
 	requests := make([]int, n)
+
 	for i := 0; i < n; i++ {
 		requests[i] = inputInt(fmt.Sprintf("Enter request %d: ", i+1))
 	}

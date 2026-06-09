@@ -21,7 +21,3 @@ func NewHallPanel(panelID, sourceFloor int) *HallPanel {
 func (hp *HallPanel) SetDirectionsInstruction(dir Directions) {
 	hp.DirectionInstruction = dir
 }
-
-func (hp *HallPanel) RequestElevator(manager *ElevatorManager, dir Directions) *Elevator {
-
-}

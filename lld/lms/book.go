@@ -1,6 +1,8 @@
 package main
 
-import "sync"
+import (
+	"sync"
+)
 
 type Book struct {
 	ID            int
@@ -17,4 +19,28 @@ func NewBook(id int, title, author, publishedYear string) *Book {
 		bookCopies.BookItem = append(bookCopies.BookItem, *NewBookItem(i, id))
 	}
 	return bookCopies
+}
+
+func (b *Book) isBookAvailable() bool {
+	b.mu.RLock()
+	defer b.mu.RUnlock()
+	for _, bookCopy := range b.BookItem {
+		if bookCopy.Status == Available {
+			return true
+		}
+	}
+	return false
+}
+
+func (b *Book) BorrowBook() *BookItem {
+	b.mu.Lock()
+	b.mu.Unlock()
+
+	for i := range b.BookItem {
+		if b.BookItem[i].Status == Available {
+			b.BookItem[i].BorrowBook()
+			return &b.BookItem[i]
+		}
+	}
+	return nil
 }

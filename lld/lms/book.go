@@ -25,7 +25,7 @@ func (b *Book) isBookAvailable() bool {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
 	for _, bookCopy := range b.BookItem {
-		if bookCopy.Status == Available {
+		if bookCopy.Status == "Available" {
 			return true
 		}
 	}
@@ -37,7 +37,7 @@ func (b *Book) BorrowBook() *BookItem {
 	b.mu.Unlock()
 
 	for i := range b.BookItem {
-		if b.BookItem[i].Status == Available {
+		if b.BookItem[i].Status == "Available" {
 			b.BookItem[i].BorrowBook()
 			return &b.BookItem[i]
 		}

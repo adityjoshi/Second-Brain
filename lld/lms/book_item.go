@@ -17,7 +17,7 @@ func NewBookItem(id, bookID int) *BookItem {
 	return &BookItem{ID: id, BookId: bookID, Status: string(Available)}
 }
 
-func (bi *BookItem) BorrowBack() {
+func (bi *BookItem) BorrowBook() {
 	bi.Status = string(Borrowed)
 }
 

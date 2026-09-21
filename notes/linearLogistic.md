@@ -59,7 +59,7 @@ Suppose we want to predict whether a student will pass or fail based on the numb
 | 9 | Pass |
 Logistic Regression learns the relationship between study hours and the probability of passing.
 Suppose for a student who studied 7 hours, the model produces:
-```text
+
 Probability of passing = 0.90
 
 Since 0.90 is greater than the typical threshold of 0.5, the model predicts:

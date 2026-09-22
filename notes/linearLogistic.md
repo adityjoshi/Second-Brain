@@ -74,24 +74,27 @@ the model predicts:
 
 Fail → 0
 
-⸻
+---
 
-Linear vs Logistic Regression
+## Linear vs Logistic Regression
 
-Feature	Linear Regression	Logistic Regression
-Type	Supervised	Supervised
-Used for	Regression	Classification
-Output	Continuous number	Probability → Class
-Example	Predict salary	Predict pass/fail
-Target	₹50,000, ₹70,000, etc.	0/1, Yes/No
-Main idea	Fits a line	Uses sigmoid to get probability
+| Feature   | Linear Regression          | Logistic Regression              |
+| --------- | -------------------------- | -------------------------------- |
+| Type      | Supervised                 | Supervised                       |
+| Used for  | Regression                 | Classification                   |
+| Output    | Continuous number          | Probability → Class              |
+| Example   | Predict salary             | Predict pass/fail                |
+| Target    | ₹50,000, ₹70,000, etc.     | 0/1, Yes/No                      |
+| Main idea | Fits a line                | Uses sigmoid to get probability  |
 
-Easy Memory Trick
+### Easy Memory Trick
 
-Linear Regression → “How much?”
-Logistic Regression → “Which class?”
+- **Linear Regression** → “How much?”
+- **Logistic Regression** → “Which class?”
 
-For Example
+### For Example
 
-House price = ₹80 lakh       → Linear Regression
-House will sell? Yes/No      → Logistic Regression
+| Question                    | Algorithm            |
+| --------------------------- | -------------------- |
+| House price = ₹80 lakh      | Linear Regression    |
+| House will sell? Yes/No     | Logistic Regression  |

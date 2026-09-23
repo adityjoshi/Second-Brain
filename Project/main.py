@@ -98,8 +98,12 @@ def train_model(processed_path, model_path, epochs):
 def evaluate_model(model_path, processed_path):
     model = keras.models.load_model(model_path)
     data = np.load(processed_path)
-    pred = np.argmax(model.predict(data["images"], verbose=0), axis=1)
-    return float(np.mean(pred == data["labels"]))
+
+    images = data["images"]
+    labels = data["labels"]
+
+    _, accuracy = model.evaluate(images, labels, verbose=0)
+    return float(accuracy)
 
 
 def predict_new_data(model_path, input_dir, processed_path, output_path):
@@ -118,6 +122,7 @@ def predict_new_data(model_path, input_dir, processed_path, output_path):
         writer.writerows(zip(ids, verdicts))
 
     result = pd.DataFrame({"image_id": ids, "predicted_class": verdicts})
+    # result.to_csv(output_path, index=False)
     return result
 
 

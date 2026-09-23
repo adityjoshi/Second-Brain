@@ -117,7 +117,8 @@ def predict_new_data(model_path, input_dir, processed_path, output_path):
         writer.writerow(["image_id", "predicted_class"])
         writer.writerows(zip(ids, verdicts))
 
-    return ids, verdicts
+    result = pd.DataFrame({"image_id": ids, "predicted_class": verdicts})
+    return result
 
 
 if __name__ == "__main__":
@@ -137,7 +138,7 @@ if __name__ == "__main__":
 
     print("Test accuracy:", round(evaluate_model(MODEL_PATH, TEST_PROCESSED_PATH), 4))
 
-    ids, _ = predict_new_data(
+    ids = predict_new_data(
         MODEL_PATH, PREDICT_DIR, PREDICT_PROCESSED_PATH, PREDICTIONS_PATH
     )
     print("Predictions written:", len(ids))

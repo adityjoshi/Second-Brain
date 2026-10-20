@@ -44,9 +44,13 @@ The central idea is that each time step receives the current input and informati
 
 An RNN maintains a hidden state, usually represented by $h_t$. Its basic equations are:
 
-$$h_t = \tanh(W_x x_t + W_h h_{t-1} + b_h)$$
+$$
+h_t = \tanh(W_x x_t + W_h h_{t-1} + b_h)
+$$
 
-$$y_t = W_y h_t + b_y$$
+$$
+y_t = W_y h_t + b_y
+$$
 
 **Where:**
 
@@ -58,7 +62,13 @@ $$y_t = W_y h_t + b_y$$
 * $y_t$: Output at the current time step.
 * $\tanh$: Activation function that introduces non-linearity.
 
-$$\text{Current hidden state} = \text{information from current input} + \text{information carried from previous step}$$
+$$
+\begin{aligned}
+\text{Current hidden state}
+&= \text{information from current input} \\
+&\quad + \text{information carried from previous step}
+\end{aligned}
+$$
 
 ### A Practical Example
 
@@ -108,23 +118,32 @@ An LSTM maintains two states:
 * **Hidden State ($h_t$):** The working memory exposed at the current time step, used to generate step outputs and compute subsequent state transitions.
 * **Cell State ($C_t$):** The long-term memory carrying signals linearly across time steps with minimal additive updates.
 
-```
-                      Cell State (C_t-1) ───────────[ X ]───────────────(+)────────────► Cell State (C_t)
-                                                      ▲                  ▲
-                                                      │ (f_t)            │ (i_t * C~_t)
-                                              ┌───────┴──────┐   ┌───────┴──────┐
-                                              │ Forget Gate  │   │  Input Gate  │
-                                              └───────▲──────┘   └───────▲──────┘
-                                                      │                  │
-Input (x_t) & Prev Hidden (h_t-1) ────────────────────┴──────────────────┴─────────────► Output Gate (o_t) ──► Hidden State (h_t)
-
+```text
+x_t  and  h_{t-1}
+        |
+        +-- Forget gate f_t --> keep or drop C_{t-1}
+        |
+        +-- Input gate i_t  --> scale the new candidate
+        |         |
+        |         +-- candidate C~_t
+        |
+        v
+C_t = (f_t * C_{t-1}) + (i_t * C~_t)
+        |
+        v
+Output gate o_t filters tanh(C_t)
+        |
+        v
+h_t
 ```
 
 #### Gate 1: Forget Gate
 
 Determines how much of the previous cell state $C_{t-1}$ to retain:
 
-$$f_t = \sigma(W_f [h_{t-1}, x_t] + b_f)$$
+$$
+f_t = \sigma(W_f [h_{t-1}, x_t] + b_f)
+$$
 
 The sigmoid activation ($\sigma$) outputs values between $0$ and $1$:
 
@@ -135,25 +154,40 @@ The sigmoid activation ($\sigma$) outputs values between $0$ and $1$:
 
 Controls which new information is written into the cell state. It combines an input gate activation with candidate cell values ($\widetilde{C}_t$):
 
-$$i_t = \sigma(W_i [h_{t-1}, x_t] + b_i)$$
+$$
+i_t = \sigma(W_i [h_{t-1}, x_t] + b_i)
+$$
 
-$$\widetilde{C}_t = \tanh(W_C [h_{t-1}, x_t] + b_C)$$
+$$
+\widetilde{C}_t = \tanh(W_C [h_{t-1}, x_t] + b_C)
+$$
 
 #### Gate 3: Cell-State Update
 
 The cell state updates by combining the retained old state with the scaled candidate state via element-wise multiplication ($\odot$):
 
-$$C_t = f_t \odot C_{t-1} + i_t \odot \widetilde{C}_t$$
+$$
+C_t = f_t \odot C_{t-1} + i_t \odot \widetilde{C}_t
+$$
 
-$$\text{New Cell State} = (\text{Retained Prior Info}) + (\text{Selected New Info})$$
+$$
+\begin{aligned}
+\text{New cell state}
+&= (\text{retained prior info}) + (\text{selected new info})
+\end{aligned}
+$$
 
 #### Output Gate
 
 Determines what part of the updated cell state should be exposed through the new hidden state $h_t$:
 
-$$o_t = \sigma(W_o [h_{t-1}, x_t] + b_o)$$
+$$
+o_t = \sigma(W_o [h_{t-1}, x_t] + b_o)
+$$
 
-$$h_t = o_t \odot \tanh(C_t)$$
+$$
+h_t = o_t \odot \tanh(C_t)
+$$
 
 ### Understanding LSTM through an Example
 
@@ -206,38 +240,48 @@ Attention functions like an information retrieval system:
 These vectors are calculated via learned linear projections:
 
 
-$$Q = X W_Q, \quad K = X W_K, \quad V = X W_V$$
+$$
+Q = X W_Q, \quad K = X W_K, \quad V = X W_V
+$$
 
 ### The Mathematics of Scaled Dot-Product Attention
 
-$$\operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$
+$$
+\begin{aligned}
+\operatorname{Attention}(Q, K, V)
+&= \operatorname{softmax}\!\left(\frac{Q K^T}{\sqrt{d_k}}\right) V
+\end{aligned}
+$$
 
 #### Step-by-Step Breakdown:
 
 1. **Similarity Computation:** Compute raw compatibility scores by taking the dot product of queries with all keys:
 
-$$S = Q K^T$$
-
+   $$
+   S = Q K^T
+   $$
 
 2. **Scaling Factor:** Divide by the square root of key dimension ($d_k$):
 
-$$S_{\text{scaled}} = \frac{Q K^T}{\sqrt{d_k}}$$
+   $$
+   S_{\text{scaled}} = \frac{Q K^T}{\sqrt{d_k}}
+   $$
 
+   *Why scale?* When $d_k$ is large, dot products grow large in magnitude, pushing the softmax function into regions with extremely small gradients. Dividing by $\sqrt{d_k}$ preserves stable gradient dynamics.
 
-
-*Why scale?* When $d_k$ is large, dot products grow large in magnitude, pushing the softmax function into regions with extremely small gradients. Dividing by $\sqrt{d_k}$ preserves stable gradient dynamics.
 3. **Softmax Normalization:** Convert scalar scores into normalized probability distributions across tokens:
 
-$$A = \operatorname{softmax}(S_{\text{scaled}})$$
+   $$
+   A = \operatorname{softmax}(S_{\text{scaled}})
+   $$
 
+   *(Every row sums to 1, where weights represent relative attention).*
 
-
-*(Every row sums to 1, where weights represent relative attention).*
 4. **Weighted Value Aggregation:** Multiply the attention weights by the value representations:
 
-$$O = A V$$
-
-
+   $$
+   O = A V
+   $$
 
 #### Illustrative Attention Weight Distribution for *"it"*:
 
@@ -256,7 +300,12 @@ $$O = A V$$
 
 Self-attention (or intra-attention) is an attention variation where the **Queries, Keys, and Values are all derived from the same sequence**:
 
-$$\operatorname{SelfAttention}(X) = \operatorname{softmax}\left(\frac{(X W_Q)(X W_K)^T}{\sqrt{d_k}}\right)(X W_V)$$
+$$
+\begin{aligned}
+\operatorname{SelfAttention}(X)
+&= \operatorname{softmax}\!\left(\frac{(X W_Q)(X W_K)^T}{\sqrt{d_k}}\right)(X W_V)
+\end{aligned}
+$$
 
 * **Unmasked Self-Attention:** Every token attends to every other token in the sequence (standard in bidirectional encoders like BERT).
 * **Causal/Masked Self-Attention:** A upper-triangular mask ensures a token at position $t$ can only attend to positions $\le t$, preventing future information leakage in autoregressive decoders (e.g., GPT).
@@ -267,9 +316,14 @@ $$\operatorname{SelfAttention}(X) = \operatorname{softmax}\left(\frac{(X W_Q)(X 
 
 Rather than computing a single set of attention weights, Multi-Head Attention projects $Q, K,$ and $V$ into $h$ distinct subspaces, computes attention in parallel for each head, and concatenates the outputs:
 
-$$\operatorname{MultiHead}(Q, K, V) = \operatorname{Concat}(\text{head}_1, \dots, \text{head}_h) W_O$$
-
-$$\text{head}_i = \operatorname{Attention}(Q W_i^Q, K W_i^K, V W_i^V)$$
+$$
+\begin{aligned}
+\operatorname{MultiHead}(Q, K, V)
+&= \operatorname{Concat}(\mathrm{head}_1, \ldots, \mathrm{head}_h)\, W_O \\
+\mathrm{head}_i
+&= \operatorname{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
+\end{aligned}
+$$
 
 ### Why use multiple heads?
 
@@ -298,26 +352,25 @@ A single head tends to average out multiple contextual signals. Multi-head atten
 
 ## 7. Evolutionary Timeline: RNN $\to$ LSTM $\to$ Transformers
 
-```
-┌─────────────────────────────────┐
-│           1. Vanilla RNN        │ ──► Processes step-by-step; bottlenecked by vanishing gradients.
-└────────────────┬────────────────┘
-                 │
-                 ▼
-┌─────────────────────────────────┐
-│            2. LSTM              │ ──► Introduces gates & cell state; handles longer sequences
-└────────────────┬────────────────┘     but remains fundamentally sequential (unparallelizable).
-                 │
-                 ▼
-┌─────────────────────────────────┐
-│      3. Recurrent + Attention   │ ──► Decouples memory from fixed vectors using attention weights
-└────────────────┬────────────────┘     over encoder states.
-                 │
-                 ▼
-┌─────────────────────────────────┐
-│     4. Pure Transformers       │ ──► Discards recurrence entirely; relies on Self-Attention + Positional
-└─────────────────────────────────┘     Encodings for fully parallel training.
-
+```text
+1. Vanilla RNN
+   Processes one step at a time.
+   Vanishing gradients limit long memory.
+        |
+        v
+2. LSTM
+   Gates and a cell state carry information further.
+   Still sequential, so training cannot run in parallel.
+        |
+        v
+3. Recurrent + Attention
+   Attention reads encoder states directly,
+   instead of squeezing them into one vector.
+        |
+        v
+4. Transformer
+   Drops recurrence. Self-attention plus positional
+   encodings train across the sequence in parallel.
 ```
 
 ---
@@ -328,19 +381,25 @@ A single head tends to average out multiple contextual signals. Multi-head atten
 
 During Backpropagation Through Time (BPTT), the gradient of the loss at step $T$ with respect to the hidden state at step $t$ involves a chain product of Jacobian matrices:
 
-$$\frac{\partial h_T}{\partial h_t} = \prod_{j=t+1}^T \frac{\partial h_j}{\partial h_{j-1}}$$
+$$
+\frac{\partial h_T}{\partial h_t} = \prod_{j=t+1}^T \frac{\partial h_j}{\partial h_{j-1}}
+$$
 
-Because each term contains $W_h^T \operatorname{diag}(1 - \tanh^2(\dots))$, eigenvalues of $W_h$ less than 1 or saturated $\tanh$ derivatives cause this product to shrink exponentially as $(T - t)$ increases.
+Because each term contains $W_h^T \operatorname{diag}(1 - \tanh^2(\ldots))$, eigenvalues of $W_h$ less than 1 or saturated $\tanh$ derivatives cause this product to shrink exponentially as $(T - t)$ increases.
 
 ### Q2. How does an LSTM alleviate vanishing gradients?
 
 The cell state update is additive:
 
-$$C_t = f_t \odot C_{t-1} + i_t \odot \widetilde{C}_t$$
+$$
+C_t = f_t \odot C_{t-1} + i_t \odot \widetilde{C}_t
+$$
 
 When differentiating $C_t$ with respect to $C_{t-1}$:
 
-$$\frac{\partial C_t}{\partial C_{t-1}} = f_t$$
+$$
+\frac{\partial C_t}{\partial C_{t-1}} = f_t
+$$
 
 If the forget gate $f_t$ is close to 1, the gradient flows across time steps without exponential decay factors, mitigating the vanishing gradient effect.
 
@@ -354,8 +413,9 @@ If the forget gate $f_t$ is close to 1, the gradient flows across time steps wit
 Self-attention is **permutation-equivariant**:
 
 
-$$\operatorname{Attention}(P Q, P K, P V) = P \operatorname{Attention}(Q, K, V)$$
-
+$$
+\operatorname{Attention}(P Q, P K, P V) = P \operatorname{Attention}(Q, K, V)
+$$
 
 *(where $P$ is a permutation matrix)*.
 

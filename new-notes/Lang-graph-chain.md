@@ -120,7 +120,9 @@ Nodes are functions that perform individual tasks. For example:
 Edges define the flow of execution between nodes:
 
 
-$$\text{search} \longrightarrow \text{evaluate} \longrightarrow \text{generate}$$
+$$
+\text{search} \longrightarrow \text{evaluate} \longrightarrow \text{generate}
+$$
 
 #### 4. Conditional edges
 
@@ -206,21 +208,19 @@ The most important distinction is that **LangChain** provides components and abs
 Suppose you are building an AI-powered customer support system.
 
 * **Using LangChain:**
-1. Receives a question.
-2. Retrieves relevant documents.
-3. Passes the retrieved context to an LLM.
-4. Generates a response.
-
+  1. Receives a question.
+  2. Retrieves relevant documents.
+  3. Passes the retrieved context to an LLM.
+  4. Generates a response.
 
 * **Using LangGraph:**
-1. Classifies the customer’s question.
-2. Routes it to the appropriate support agent.
-3. Retrieves relevant documents.
-4. Evaluates the generated answer.
-5. Retries if the answer is insufficient.
-6. Requests human approval for sensitive cases.
-7. Returns the final answer.
-
+  1. Classifies the customer’s question.
+  2. Routes it to the appropriate support agent.
+  3. Retrieves relevant documents.
+  4. Evaluates the generated answer.
+  5. Retries if the answer is insufficient.
+  6. Requests human approval for sensitive cases.
+  7. Returns the final answer.
 
 
 LangGraph is particularly useful when the application needs to make decisions about what to do next.
@@ -246,23 +246,26 @@ The agent might:
 The key distinction is that the agent can choose actions based on the situation instead of following only a fixed sequence.
 
 * **Where does LangChain fit?**
-LangChain provides integrations and abstractions for:
-* LLMs
-* Prompts
-* Tools
-* Data retrieval
-* Structured outputs
-*(These components help build the individual capabilities of an agent.)*
 
+  LangChain provides integrations and abstractions for:
+
+  * LLMs
+  * Prompts
+  * Tools
+  * Data retrieval
+  * Structured outputs
+
+  *(These components help build the individual capabilities of an agent.)*
 
 * **Where does LangGraph fit?**
-LangGraph manages the agent’s execution flow, including:
-* Which node executes next
-* How state is maintained
-* How tool results are incorporated
-* When the agent should retry or finish
-* When execution should pause for human approval
 
+  LangGraph manages the agent’s execution flow, including:
+
+  * Which node executes next
+  * How state is maintained
+  * How tool results are incorporated
+  * When the agent should retry or finish
+  * When execution should pause for human approval
 
 
 > **Rule of thumb:** LangChain helps you build the components; LangGraph helps you control how those components work together in a complex workflow. Both offer overlapping capabilities.
@@ -275,7 +278,9 @@ LangGraph manages the agent’s execution flow, including:
 
 A chain generally represents a linear sequence of operations:
 
-$$\text{User Input} \longrightarrow \text{Prompt} \longrightarrow \text{LLM} \longrightarrow \text{Output}$$
+$$
+\text{User Input} \longrightarrow \text{Prompt} \longrightarrow \text{LLM} \longrightarrow \text{Output}
+$$
 
 Each step feeds into the next. Chains are useful when the workflow is straightforward and does not require complex control flow.
 
@@ -284,22 +289,21 @@ Each step feeds into the next. Chains are useful when the workflow is straightfo
 A graph represents operations as nodes connected by edges:
 
 ```text
-          START
-            |
-            v
-          Search
-            |
-            v
-          Evaluate
-          /      \
-    Sufficient?   No
-        /          \
-       v            v
-    Generate      Search
+        START
+          |
+          v
+       Search <-----------+
+          |               |
+          v               |
+       Evaluate           |
+        /    \            |
+      Yes     No ---------+
+       |
+       v
+    Generate
        |
        v
       END
-
 ```
 
 This illustrates conditional execution and a loop. A graph is useful when the application must make decisions, revisit earlier steps, maintain state, or support complex execution patterns.
@@ -373,22 +377,21 @@ Human-in-the-loop means incorporating human review or approval into an otherwise
 
 ```text
 Customer Request
-       |
-       v
- Analyse Request
-       |
-       v
- Check Refund Rules
-       |
-       v
- Refund Eligible?
-       |
-       v
- Human Approval (System pauses here)
-       |
-       v
- Process Refund
-
+    |
+    v
+Analyse Request
+    |
+    v
+Check Refund Rules
+    |
+    v
+Refund Eligible?
+    |
+    v
+Human Approval (workflow pauses here)
+    |
+    v
+Process Refund
 ```
 
 For sensitive actions, the system pauses before executing. A human reviews the request and approves or rejects it. The workflow then resumes with the decision. LangGraph supports this pattern via interrupts and checkpointing.

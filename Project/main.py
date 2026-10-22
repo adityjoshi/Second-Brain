@@ -120,30 +120,12 @@ def predict_new_data(model_path, input_dir, processed_path, output_path):
         writer = csv.writer(f)
         writer.writerow(["image_id", "predicted_class"])
         writer.writerows(zip(ids, verdicts))
+    df = pd.DataFrame()
+    df[""] = ids
+    df[""] = verdicts
+    
+    return ids,verdicts
 
-    result = pd.DataFrame({"image_id": ids, "predicted_class": verdicts})
-    # result.to_csv(output_path, index=False)
-    return result
 
 
-if __name__ == "__main__":
-    train_images, train_labels = preprocess_images(
-        TRAIN_DIR, TRAIN_PROCESSED_PATH, True
-    )
-    print("Processed training images:", train_images.shape)
 
-    test_images, _ = preprocess_images(TEST_DIR, TEST_PROCESSED_PATH, True)
-    print("Processed test images:", test_images.shape)
-
-    build_model(train_images.shape[1:], len(np.unique(train_labels)))
-    print("Model built and compiled.")
-
-    train_model(TRAIN_PROCESSED_PATH, MODEL_PATH, 30)
-    print("Model trained and saved.")
-
-    print("Test accuracy:", round(evaluate_model(MODEL_PATH, TEST_PROCESSED_PATH), 4))
-
-    ids = predict_new_data(
-        MODEL_PATH, PREDICT_DIR, PREDICT_PROCESSED_PATH, PREDICTIONS_PATH
-    )
-    print("Predictions written:", len(ids))

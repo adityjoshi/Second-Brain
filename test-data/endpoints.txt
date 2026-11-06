@@ -1,0 +1,100 @@
+POST `/api/v1/accounts`
+{
+  "account_number": "ACC10000123",
+  "email_address": "meena@example.in",
+  "password": "Chennai#2026",
+  "role": "inspector"
+}
+
+
+POST `/api/v1/accounts/login`
+{
+  "account_number": "ACC10000123",
+  "password": "Chennai#2026"
+}
+
+
+POST `/api/v1/readings`
+
+{
+  "account_number": "ACC10000123",
+  "meter_serial": "MTR-NS-004411",
+  "consumer_category": "domestic",
+  "billing_period": "2026-06",
+  "sanctioned_load_kw": 3,
+  "cycle_days": 30,
+  "previous_reading": 14208,
+  "current_reading": 14675,
+  "read_type": "actual",
+  "read_date": "2026-07-01"
+}
+
+
+PUT `/api/v1/readings/{reading_identifier}`
+
+{
+  "account_number": "ACC10000123",
+  "meter_serial": "MTR-NS-004411",
+  "consumer_category": "domestic",
+  "billing_period": "2026-06",
+  "sanctioned_load_kw": 5,
+  "cycle_days": 30,
+  "previous_reading": 14208,
+  "current_reading": 14675,
+  "read_type": "actual",
+  "read_date": "2026-07-01"
+}
+
+
+PATCH `/api/v1/readings/{reading_identifier}/status`
+
+{
+  "wanted_status": "assigned",
+  "noted_by": "meena"
+}
+```
+
+POST `/api/v1/screening`
+
+{
+  "account_number": "ACC10000011",
+  "meter_serial": "MTR-AB-100011",
+  "consumer_category": "domestic",
+  "billing_period": "2025-01",
+  "sanctioned_load_kw": 1.212,
+  "cycle_days": 31,
+  "previous_reading": 50616.4,
+  "current_reading": 50772.3,
+  "read_type": "locked",
+  "read_date": "14-Jun-2025",
+  "units_consumed": 156,
+  "twelve_month_average_units": 142.38,
+  "same_month_last_year_units": 133.5,
+  "consecutive_estimated_reads": 0,
+  "days_since_actual_read": 32,
+  "neighbourhood_average_units": 178.2,
+  "arrears_inr": 1450.67,
+  "payment_defaults_last_year": 2,
+  "seal_check_result": "intact",
+  "meter_make": "Secure",
+  "division": "North",
+  "meter_install_date": "2021-03-01",
+  "cycle_end_date": "2025-06-30"
+}
+
+
+POST `/api/v1/assistant/questions`
+
+{
+  "question": "What is the energy charge for a domestic connection above 400 units?",
+  "consumer_category": "domestic",
+  "billing_period": "2025-08"
+}
+
+
+No body:
+- GET `/api/v1/health`
+- GET `/api/v1/readings`
+- GET `/api/v1/readings/{reading_identifier}`
+- DELETE `/api/v1/readings/{reading_identifier}`
+- POST `/api/v1/assistant/threads/{thread_id}/release`

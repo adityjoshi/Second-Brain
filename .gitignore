@@ -35,6 +35,10 @@ build/
 *.sqlite
 *.sqlite3
 *.db
+!incremental/**/*.log
+!incremental/**/*.sqlite
+!incremental/**/*.sqlite3
+!incremental/**/*.db
 
 # Model weights and other bulky binaries
 *.pt
@@ -49,9 +53,5 @@ build/
 *.h5
 *.ckpt
 
-# incremental: local env, generated output, and heavy data
+# incremental virtualenv is ~929MB and contains a 203MB binary GitHub will reject
 incremental/.venv/
-incremental/artifacts/
-incremental/output/
-incremental/processed_data/*.csv
-incremental/data/

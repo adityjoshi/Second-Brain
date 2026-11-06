@@ -1,7 +1,57 @@
+# OS / editor
 .DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Secrets
 .env
 .env.*
+!.env.example
+
+# Python environments and caches
 **/__pycache__/
 **/.venv/
+**/venv/
 **/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
 *.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.ipynb_checkpoints/
+
+# Logs and local databases
+*.log
+*.sqlite
+*.sqlite3
+*.db
+
+# Model weights and other bulky binaries
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.pkl
+*.joblib
+*.dylib
+*.so
+*.parquet
+*.h5
+*.ckpt
+
+# incremental: local env, generated output, and heavy data
+incremental/.venv/
+incremental/artifacts/
+incremental/output/
+incremental/processed_data/*.csv
+incremental/data/

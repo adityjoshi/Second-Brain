@@ -1,2 +1,0 @@
-message_id,reason
-MSG000002,GEMINI_API_KEY is not set; put GEMINI_API_KEY=<your key> in the .env file at the project root

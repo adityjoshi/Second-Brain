@@ -1,0 +1,167 @@
+RakshaRoute: Shark Tank Pitch Script
+Team: Shreya (P1) • Jishita (P2) • Aditya (P3) • Varma (P4) • Swarna (P5) • Swati (P6)Skit cast: Jishita plays Priya • Swati plays Sunita (Priya's mother) • Shreya narratesTone reminder: Calm, warm and confident. This is about freedom and peace of mind, not fear.
+SHREYA: Slides 1–3 (about 3.5 minutes, including the skit)
+Slide 1: Title
+[Walk to the centre. Smile. Pause for two seconds before speaking.]
+Good morning, sharks, and good morning, everyone.
+Before we begin, a quick question. Raise your hand if you have ever shared your live location with family while travelling at night, or been told, "Message me when you reach."
+[Pause. Look around and acknowledge the hands.]
+Almost everyone. That little message, "Reached home?", is sent millions of times every night in India. Behind every one of those messages is someone waiting, and someone travelling who's a little more careful than they should have to be.
+We are RakshaRoute Technologies, and our promise is simple: not the fastest route. The safest one.
+Let us show you a night that many of us know too well.
+[Move to the next slide.]
+Slide 2: "10:47 PM" (skit, about 75 seconds)
+Shreya: Tuesday night, 10:47 PM. Priya, a software engineer, is just leaving her office in HITEC City. Her home is in Kukatpally.
+(Jishita, as Priya, walks slowly across the front, looking at her phone. Swati, as Sunita, stands on the other side holding a phone to her ear.)
+Sunita: Priya, where are you? It's almost eleven.
+Priya: Leaving now, Amma. Maps says fourteen minutes if I take the shortcut behind the complex.
+Sunita: That road? Beta, there are no lights there…
+Priya (pauses, looks ahead, takes a breath): It's the fastest, Amma. Don't worry. I'll call you when I reach.
+Sunita (quietly, after the call ends): Call me when you reach…
+(Both actors FREEZE.)
+[CLICK: the banner appears]
+Shreya (steps forward, slowly): Priya isn't doing anything wrong. She's just trusting an app that was built to answer one question: what's the shortest road?
+What if her map knew which road was safe, not just which road was short?
+[Actors return to the side. Move to the next slide.]
+Slide 3: Who We Are
+That's exactly what RakshaRoute does.
+RakshaRoute is an AI-powered safety navigation app. It does three things. (Point to each icon.)
+First, safety-scored routes. Before you start, it compares routes on how safe they are, not just how fast. Second, live trip sharing. Your family can follow your journey in real time. Third, smart auto-alerts. If your trip goes off course, it notices and quietly alerts the people you trust.
+(Point to the map.) Look at Priya's two options. The grey dashed line is the fastest route: fourteen minutes, through dark and empty streets. The green line is the safest route: seventeen minutes, through well-lit, busy roads.
+Three extra minutes. Complete peace of mind.
+And this little one (point to Jugnu) is Jugnu, our firefly guide. A firefly lights up the path in the dark, and that's what we do too.
+Maps tell you how to get there. RakshaRoute tells you how to get there safely.
+But how big is this problem, really? Jishita will show you.
+JISHITA: Slides 4–6 (about 3.5 minutes)
+Slide 4: The Problem
+Thank you, Shreya.
+Look at this bar. (Point across the 7 PM to 11 PM bars.) At seven in the evening, the journey home feels easy. By eleven, for many women, it doesn't.
+So every single evening, women like Priya do a quiet calculation: the faster road, or the one that feels safer? And they make that decision with no information at all.
+There are four reasons this keeps happening. (Point to each card.)
+One: maps optimise for speed. The shortest route is often the darkest and emptiest.
+Two: safety knowledge is informal. Advice like "avoid that lane after nine" is passed around in WhatsApp groups and between friends. It isn't in any app.
+Three: help is reactive. SOS tools are important, but they work after something already feels wrong, not before.
+Four: opportunities are lost. Women turn down late classes, evening jobs and night shifts, simply because of how they'll get home.
+Slide 5: The Problem in Numbers
+Let me show you how big this is.
+(Point to the first card.) In 2023, India registered about 4.48 lakh crimes against women. (Pause.)
+(Second card.) A 2025 survey found that 70% of women feel safe travelling alone on public transport during the day. At night, that drops to only 36%. (Pause.)
+(Third card, slower.) And this is the number that matters most to us: 52% of women surveyed said safety concerns made them turn down education or work opportunities. (Pause.)
+Think about that. Half of the women in that survey gave up opportunities because of how they would get home.
+So this isn't only a safety problem. It's a freedom problem. When women can't travel freely, India loses talent, education and income.
+Slide 6: Competition
+So what tools exist today? We compared them on four things (point to the column headings): planning a safe route, sharing a live trip, alerting automatically if something changes, and working before danger.
+(Point to each row.)
+Google Maps and other navigation apps are excellent at getting you somewhere fast, and you can share your location. But they have no safety layer.
+The government's 112 India app is a very important emergency service. Its SHOUT feature can alert nearby volunteers when a woman needs help. But it comes into play once help is needed.
+Phone emergency SOS needs you to press it yourself.
+Family location-sharing apps show where someone is, but they don't guide them on a safer path.
+So today's tools either navigate or rescue. None of them prevent.
+[CLICK: RakshaRoute row appears]
+RakshaRoute is the only one that ticks all four, because it works before anything goes wrong.
+(Point to the callout.) And to be clear: we don't replace 112. We work before you ever need it, and we connect you to it, in one tap, if you do.
+So how does RakshaRoute decide which road is safe? Aditya will show you the technology.
+ADITYA: Slides 7–8 (about 3 minutes)
+Slide 7: Our Solution
+Thank you, Jishita.
+Let me start with something we all use. A weather app tells you whether to carry an umbrella before you leave home. RakshaRoute tells you which road is safe before you take it.
+(Point to the map.) For Priya's trip tonight, the fastest route gets a Safety Score of 41 out of 100. The safest route scores 89. And it's only three minutes longer.
+Here's how we get there, in five steps. (Point to each step.)
+One: Collect. We gather data on street lighting, how busy an area is, public incident data and reports from our community.
+Two: Score. Every street gets a live Safety Score from 0 to 100, and that score changes with the time of day.
+Three: Route. The app suggests the safest path, usually with only a few extra minutes of travel.
+Four: Watch. During the trip, it notices if something unusual happens, like an unexpected stop or a detour.
+Five: Alert. If something looks wrong, it first checks with her. Then, if needed, it alerts her trusted contacts, and 112 is always one tap away.
+Because, as we believe, every woman deserves to get home, not just get there fast.
+Slide 8: Under the Hood
+Now let me show you the serious AI behind this simple map.
+(Point to the hexagon map.) We divide the city into thousands of small hexagonal cells, using a system called the H3 grid. Each cell gets a Safety Score that updates every hour. Violet cells are safer; pink cells score lower.
+(Point to each tile, slowly and confidently.)
+Geospatial risk scoring. Each cell is scored using lighting, activity and incident data.
+Graph-based route optimisation. We treat the city's roads as a weighted graph, where every road has a time and a safety cost. Then we find a safety-weighted shortest path: the best balance of speed and safety.
+Time-aware prediction. The same street can be busy and bright at seven PM, and empty at eleven. So its score changes through the night.
+Movement anomaly detection. The system learns what a normal trip looks like, and flags sudden stops, detours or unusual speed changes.
+Crowdsourced data validation. Every user report gets a trust score, so spam and false reports are filtered out before they affect anyone's route.
+Privacy-first architecture. Location is shared only during an active trip, it's encrypted, and it's deleted afterwards.
+So it's serious AI, behind a map anyone can use. Now let's see what Priya actually sees on her phone. Varma.
+VARMA: Slides 9–10 (about 3 minutes)
+Slide 9: Live Demo
+Thank you, Aditya.
+Let's replay Priya's night, but this time with RakshaRoute.
+[CLICK: Phone 1]She opens the app and enters "Home." She sees two options. Fastest: fourteen minutes, Safety Score 41. Safest: seventeen minutes, Safety Score 89, recommended. She taps "Start Safe Trip."
+[CLICK: Phone 2]Her trip is now live. Her mother can see her moving on the map. Estimated arrival: 10:58 PM. And the status at the bottom is simple and calm: "All good."
+[CLICK: Phone 3]Now, suppose she stops somewhere unexpectedly for four minutes. The app doesn't panic. It gently asks: "You've stopped for four minutes. Are you okay?"If she's just buying water, she taps "I'm fine." If she wants help, she taps "Alert my contacts." And if she doesn't respond at all, her contacts are alerted automatically. 112 is always one tap away.
+(Point to the green strip at the bottom. Pause.)
+And at 10:58, her mother's phone lights up with the message she was waiting for: "Priya reached home safely."
+Slide 10: Trust by Design
+Now, an important question: would you hand your location to just any app?
+A safety app must first be safe itself. Women will only use RakshaRoute if they trust it completely. So we built trust in from day one, with four principles. (Point to each card.)
+One: consent first. Tracking happens only during a trip she starts. It's off by default.
+Two: data minimised. Trip data is encrypted and automatically deleted after 24 hours.
+Three: fair scoring. Our scores describe conditions, like lighting, activity and time of day. They never label communities. And any score can be explained.
+Four: human-checked reports. Reports from the community are verified before they can influence anyone's route.
+(Point to the shield.) Her location. Her control. We've thought about ethics, not just features.
+So who is RakshaRoute for? Swarna will tell you.
+SWARNA: Slides 11–12, pricing on 13 (about 3 minutes)
+Slide 11: Target Audience
+Thank you, Varma.
+RakshaRoute is built for every woman who travels after dark. We focus on three groups. (Point to each card.)
+Our primary users are working women and students, aged 18 to 35, in metro cities. Why them? They travel late most often, and they already use navigation apps every day. So we fit right into a habit they already have.
+Our secondary users are families and parents: the people waiting for that "Reached home?" message. They want peace of mind, and they're willing to pay for it.
+And our B2B partners are companies with night shifts, colleges and hostels. They have a responsibility for the safety of their employees and students, and one partnership can bring thousands of users at once.
+(Point to the dark card.) We'll launch in Hyderabad first. It has one of India's biggest IT corridors and a huge student population. Then we expand to other metros.
+Slide 12: Our USP
+So why will people choose RakshaRoute? Six reasons. (Point to each tile.)
+Safety-first routing. It's the only route planner that scores safety.
+Prevention, not just SOS. We act before danger, not after.
+Smart, polite alerts. It checks with her first, so there are no false panics.
+Explainable scores. It shows why a route is safer.
+Community-powered. Every trip and every report makes the map better for everyone.
+Privacy by design. Her location, her control.
+Slide 13 (left side): Revenue Model
+So how do we make money?
+First, our core safety features are free. Safe-route planning and basic SOS cost nothing, because safety shouldn't be a luxury.
+Raksha Plus, at just ₹49 a month, is our most popular plan. It adds live trip sharing, smart check-ins and alerts to up to five trusted contacts. That's less than the price of a coffee.
+Raksha for Work and Campus is a custom plan for companies and colleges, with an admin dashboard for night-shift and campus commute safety.
+And Raksha Insights gives city planners anonymised safety heat maps. For example, they can see exactly where new streetlights are needed. So our data helps make the city itself safer.
+That's how we earn. Swati will now tell you how we grow, and what we're asking for.
+SWATI: Slide 13 marketing, Slides 14–15 (about 3 minutes)
+Slide 13 (right side): Marketing Plan
+Thank you, Swarna.
+Our marketing has four steps. (Point to each row.)
+Awareness. We launch our campaign, #SafeNotFast, on International Women's Day, with posters in metro stations and Instagram reels made with women creators.
+Trial. The basic plan is free forever, and every student gets three months of Raksha Plus free.
+Partnerships. We work with corporate HR teams, college campuses, hostels and police women-safety units.
+Referral. Invite three friends, get a month of Plus free, plus campus ambassadors in every college.
+Slide 14: The Ask
+(Stand still. Speak slowly. Look at the sharks.)
+Sharks, we are asking for ₹1.2 crore for 10% equity, which values RakshaRoute at ₹12 crore.
+(Pause.)
+Here's exactly where your money goes. (Point to the donut chart.)
+35%, ₹42 lakh, goes to product and AI development.
+25%, ₹30 lakh, goes to marketing and campus ambassadors.
+20%, ₹24 lakh, goes to data partnerships and mapping.
+15%, ₹18 lakh, goes to our team and operations.
+5%, ₹6 lakh, goes to legal, privacy compliance and contingency.
+(Point to the roadmap.) And here's what that investment achieves.Year 1: launch in Hyderabad, reach 1 lakh users and sign 10 corporate and campus partners.Year 2: expand to 5 metro cities, reach 10 lakh users, and break even on our business clients.Year 3: 15 cities, plus partnerships with city planners.
+(These are our projections.)
+Slide 15: Call to Action
+(All six walk up and stand in a line. Jishita and Swati step forward for a short replay.)
+Remember Priya? Let's see her night one more time, with RakshaRoute.
+Sunita (phone to ear): Priya, where are you?
+Priya (smiling, relaxed): I'm on the safest route, Amma. Seventeen minutes. You can see me live on your phone.
+(Pause. Swati looks at her phone and reads, smiling.)
+Sunita: "Priya reached home safely." (Relieved smile.)
+(Jishita and Swati step back into line. Swati steps forward again as the presenter.)
+Swati: To the sharks: invest ₹1.2 crore and help us make every evening commute in India a safer one.
+To everyone in this room: download RakshaRoute, add your trusted contacts, and choose #SafeNotFast tonight.
+Because we believe one simple thing.
+All six together: Every woman deserves to get home, not just get there fast.
+Swati: Thank you. We're ready for your questions.
+Q&A Backup (hidden Slide 16 has these)
+"How do you get lighting and crowd data?" (Aditya) From public open data, satellite night-light imagery, anonymised mobility signals, partnerships and verified community reports.
+"Won't this unfairly label some areas as unsafe?" (Aditya) Our scores describe conditions like lighting and activity at a particular time. They never label communities, and every score can be explained.
+"What about false alarms?" (Varma) The app always checks with the user first. Contacts are alerted only if she doesn't respond or asks for help.
+"How is this different from sharing location on WhatsApp?" (Swarna) Sharing only shows where she is. RakshaRoute chooses a safer path and notices when something goes wrong.
+"How did you reach ₹12 crore?" (Swati) It's based on our projected Year-2 users, business contracts and the size of the urban working-women market. We're happy to discuss it.
+ 
